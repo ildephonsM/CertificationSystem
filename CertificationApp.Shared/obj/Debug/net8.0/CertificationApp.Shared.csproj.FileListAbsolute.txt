@@ -1,0 +1,12 @@
+C:\Sever\CertificationApp\CertificationApp.Shared\bin\Debug\net8.0\CertificationApp.Shared.deps.json
+C:\Sever\CertificationApp\CertificationApp.Shared\bin\Debug\net8.0\CertificationApp.Shared.dll
+C:\Sever\CertificationApp\CertificationApp.Shared\bin\Debug\net8.0\CertificationApp.Shared.pdb
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\CertificationApp.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\CertificationApp.Shared.AssemblyInfoInputs.cache
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\CertificationApp.Shared.AssemblyInfo.cs
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\CertificationApp.Shared.csproj.CoreCompileInputs.cache
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\CertificationApp.Shared.sourcelink.json
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\CertificationApp.Shared.dll
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\refint\CertificationApp.Shared.dll
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\CertificationApp.Shared.pdb
+C:\Sever\CertificationApp\CertificationApp.Shared\obj\Debug\net8.0\ref\CertificationApp.Shared.dll

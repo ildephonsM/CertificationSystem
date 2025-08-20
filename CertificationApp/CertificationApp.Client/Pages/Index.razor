@@ -1,0 +1,209 @@
+﻿@page "/"
+@namespace CertificationSystem2.Pages
+@rendermode InteractiveWebAssembly
+
+
+
+<PageTitle>Certification Management</PageTitle>
+
+<div class="container-fluid">
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <h1> Nkqubela Technologies </h1>
+            <p> Certification Management</p>
+        </div>
+
+        <!-- Navigation Cards -->
+        <div class="nav-buttons">
+            <NavLink href="/create" class="nav-card" Match="NavLinkMatch.Prefix">
+                <i class="fas fa-plus-circle"></i>
+                <h3>Create User</h3>
+                <p>Add a new user to the system</p>
+            </NavLink>
+
+            <NavLink href="history" class="nav-card" Match="NavLinkMatch.Prefix">
+                <i class="fas fa-history"></i>
+                <h3>View Historical Data</h3>
+                <p>Browse and manage existing certificates</p>
+            </NavLink>
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 25px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        margin: 60px auto;
+        max-width: 1300px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #000000 100%);
+        color: white;
+        text-align: center;
+        padding: 50px 30px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+    @@keyframes shimmer {
+        0%
+
+    {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 3rem;
+        font-weight: 800;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .header p {
+        margin: 15px 0 0 0;
+        opacity: 0.95;
+        font-size: 1.2rem;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+    }
+
+    .nav-buttons {
+        padding: 60px 40px;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        background: linear-gradient(45deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .nav-card {
+        background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+        border: none;
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        min-width: 220px;
+        max-width: 280px;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+        text-decoration: none !important;
+    }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #000000 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 15px 35px rgba(30, 60, 114, 0.3);
+            border-color: rgba(30, 60, 114, 0.3);
+            text-decoration: none;
+        }
+
+            .nav-card:hover::before {
+                opacity: 0.05;
+            }
+
+            .nav-card:hover h3,
+            .nav-card:hover p {
+                color: #1e3c72;
+            }
+
+        .nav-card i {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #000000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover i {
+            transform: scale(1.1);
+            filter: drop-shadow(0 5px 15px rgba(30, 60, 114, 0.3));
+        }
+
+        .nav-card h3 {
+            color: #1a1a1a;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .nav-card p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+
+    @@media (max-width: 768px) {
+        .header h1
+
+    {
+        font-size: 2.2rem;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .nav-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    }
+</style>
+
+@code {
+    [Inject] NavigationManager Navigation { get; set; } = default!;
+
+    
+}

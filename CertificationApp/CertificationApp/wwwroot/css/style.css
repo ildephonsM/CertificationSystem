@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #343a40;
+    color: white;
+}
+
+    .sidebar .nav-link {
+        color: white;
+    }
+
+        .sidebar .nav-link.active {
+            background-color: #495057;
+        }
+
+.content {
+    flex: 1;
+    padding: 2rem;
+}
