@@ -24,6 +24,10 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Sever/CertificationApp/CertificationApp/CertificationApp.Client/Pages/AddCourses.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkQ291cnNlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Sever/CertificationApp/CertificationApp/CertificationApp.Client/Pages/CreateUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlVXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

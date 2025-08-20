@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CertificationApp.Shared.Models;
+﻿using CertificationApp.Shared.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CertificationApp.Data
 {
@@ -9,5 +9,6 @@ namespace CertificationApp.Data
            : base(options) { }
 
         public DbSet<CreateUser> Users { get; set; } = default!;
+        public DbSet<Courses> Courses { get; set; } = default!;
     }
 }

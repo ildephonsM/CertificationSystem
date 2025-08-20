@@ -51,9 +51,21 @@
                         }
                     </div>
 
-                    <div class="form-group">
+                    @* <div class="form-group">
                         <label class="form-label">Course Name *</label>
                         <InputText @bind-Value="User.CourseName" class="form-control" placeholder="Enter course name" />
+                        <ValidationMessage For="@(() => User.CourseName)" class="text-danger" />
+                    </div> *@
+
+                    <div class="form-group">
+                        <label class="form-label">Course Name *</label>
+                        <InputSelect @bind-Value="User.CourseName" class="form-control">
+                            <option value="">-- Select a course --</option>
+                            @foreach (var course in courseList)
+                            {
+                                <option value="@course.CourseName">@course.CourseName</option>
+                            }
+                        </InputSelect>
                         <ValidationMessage For="@(() => User.CourseName)" class="text-danger" />
                     </div>
 
@@ -302,13 +314,21 @@
 
 @code {
     private CertificationApp.Shared.Models.CreateUser User { get; set; } = new();
+    private List<CertificationApp.Shared.Models.Courses> courseList = new();
+
     private bool isSubmitting = false;
     private bool showSuccessMessage = false;
     private bool showErrorMessage = false;
     private bool showDuplicateWarning = false;
     private string errorMessage = string.Empty;
 
-    protected override void OnInitialized() => ResetForm();
+    // Use Async initialization to fetch courses
+    protected override async Task OnInitializedAsync()
+    {
+        ResetForm();
+        courseList = await Http.GetFromJsonAsync<List<CertificationApp.Shared.Models.Courses>>("api/Courses")
+                     ?? new List<CertificationApp.Shared.Models.Courses>();
+    } 
 
     private async Task HandleValidSubmit()
     {
@@ -355,6 +375,7 @@
         User.Name = string.Empty;
         User.Surname = string.Empty;
         User.IdNumber = string.Empty;
+        // User.CourseName = string.Empty;
         User.CourseName = string.Empty;
         User.DateCompleted = DateTime.Today;
 

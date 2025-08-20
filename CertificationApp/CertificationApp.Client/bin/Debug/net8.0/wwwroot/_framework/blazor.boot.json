@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "CertificationApp.Client",
   "resources": {
-    "hash": "sha256-g06ph8CbG6XnT8ReFLxNSE5jx90o69UF/aarYtL6Zqs=",
+    "hash": "sha256-7BamnhQ8sGt7qNfq2a/lIS0O2CZOyN/LvywhP1/rhXE=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-O/NCYcAN9uPocD7ns7AzF/cqx7f5vL1PTJCQs0vEXyk="
     },
@@ -209,12 +209,12 @@
       "mscorlib.wasm": "sha256-RLW/7NVuhoPfq151II3kX2kWHgBwQgpCw9aemQNg3to=",
       "netstandard.wasm": "sha256-lAg5WvTiA8wbsIwlr51xh0YWpXT9F5EX3Cnv+11O/mU=",
       "System.Private.CoreLib.wasm": "sha256-3O3muuRQwoLRecYRjfIFWUURvTjP4EmD2O8wYg2UDNY=",
-      "CertificationApp.Shared.wasm": "sha256-FYLZ5A5px95dU73T12GnvIQdK2uDoVtSbL79prqY29Q=",
-      "CertificationApp.Client.wasm": "sha256-ujnm4GZDtufCXf6yOyubJQOZoqSjyTy150TjCPZdVcY="
+      "CertificationApp.Shared.wasm": "sha256-68bS8yqW+ViDZAkX/CnlbsRSyvtWcs70GpYl3r1QVAA=",
+      "CertificationApp.Client.wasm": "sha256-EzUwk3OAQChi8EyMOi0W4AaYiJ0EsMPMgbHXQhpGlnE="
     },
     "pdb": {
-      "CertificationApp.Shared.pdb": "sha256-qybHeKbKe9it16ayNZl8sZ3CmPqiWgLaOjYXWuPei1g=",
-      "CertificationApp.Client.pdb": "sha256-D3H6Qpgtl9bP8laDixN2mHtiqqh+67FSzqwjsfoBM/I="
+      "CertificationApp.Shared.pdb": "sha256-8V5Y9qyLKTCo4Nstt1PGzXGgtYm0nOhRHBwqSoi72MA=",
+      "CertificationApp.Client.pdb": "sha256-Px3aQhvFzH/gnPnfJ7Xd2h3sPmFr8e9JnFDYxlsRQF4="
     }
   },
   "cacheBootResources": true,

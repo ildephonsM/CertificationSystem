@@ -1030,11 +1030,8 @@ C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\cpzuubwipo-tptq2av103.gz
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\3j21chcrkb-lfu7j35m59.gz
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\y4b5x9cll5-oyz0vx2fzb.gz
-C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\dfe22dp6o4-tespumf53w.gz
-C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\pjn0xab290-9j2ud9okkr.gz
-C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\22ggzcakrk-arz9ltuoag.gz
-C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\tye5fxrkg8-9a4tw11opt.gz
-C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\rev6wdjuz7-fhmmefckmv.gz
+C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\dfe22dp6o4-x5cybnq655.gz
+C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\pjn0xab290-fg0vhvcpz2.gz
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\staticwebassets.build.json
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\staticwebassets.development.json
@@ -1045,3 +1042,6 @@ C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\refint\CertificationApp.Client.dll
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\CertificationApp.Client.pdb
 C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\ref\CertificationApp.Client.dll
+C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\22ggzcakrk-jk3kajjxvh.gz
+C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\tye5fxrkg8-pya9nrsvvp.gz
+C:\Sever\CertificationApp\CertificationApp\CertificationApp.Client\obj\Debug\net8.0\compressed\rev6wdjuz7-34in8hw84m.gz
