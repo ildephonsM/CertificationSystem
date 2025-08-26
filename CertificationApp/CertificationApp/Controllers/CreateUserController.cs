@@ -40,5 +40,39 @@ namespace CertificationApp.Server.Controllers
 
             return CreatedAtAction(nameof(GetUsers), new { id = user.Id }, user);
         }
+
+        // PUT: api/Certificate/{id)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(Guid id, CreateUser updatedUser)
+        {
+            if (id != updatedUser.Id)
+                return BadRequest();
+
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+                return NotFound();
+
+            // Only allow editing Name & Surname
+            user.Name = updatedUser.Name;
+            user.Surname = updatedUser.Surname;
+
+            user.DateModified = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // DELETE: api/Certificates/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+                return NotFound();
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }

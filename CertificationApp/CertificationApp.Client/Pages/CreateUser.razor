@@ -9,13 +9,19 @@
 <div class="container-fluid">
     <div class="main-container">
         <div class="content-area">
-            <NavLink href="/" class="back-btn" Match="NavLinkMatch.All">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </NavLink>
+            <div class="d-flex mb-4">
+                <NavLink href="/" class="back-btn" Match="NavLinkMatch.All">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </NavLink>
+
+                <NavLink href="/all-learners" class="back-btn ms-3" Match="NavLinkMatch.All">
+                    <i class="fas fa-users"></i> All Learners
+                </NavLink>
+            </div>
 
             <div class="form-container">
-                <h2><i class="fas fa-plus-circle"></i> Create New Certificate</h2>
-                <p class="text-muted mb-4">Enter the details for the new certification credential</p>
+                <h2><i class="fas fa-plus-circle"></i> Create New Learner</h2>
+                <p class="text-muted mb-4">Enter the details for the new learner credential</p>
 
                 <EditForm Model="User" OnValidSubmit="HandleValidSubmit">
                     <DataAnnotationsValidator />

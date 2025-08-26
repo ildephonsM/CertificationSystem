@@ -1,0 +1,320 @@
+﻿@page "/create-venue"
+@using CertificationApp.Shared.Models
+@inject HttpClient Http
+@using Microsoft.AspNetCore.Components.Forms
+
+<PageTitle>Create Venue</PageTitle>
+
+<div class="container-fluid">
+    <div class="main-container">
+        <div class="content-area">
+
+            <!-- Back Buttons -->
+            <div class="d-flex mb-4 flex-wrap">
+                <NavLink href="/" class="back-btn" Match="NavLinkMatch.All">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </NavLink>
+
+                <NavLink href="/all-venues" class="back-btn ms-3 mt-2 mt-md-0" Match="NavLinkMatch.All">
+                    <i class="fas fa-map-marker-alt"></i> All Venues
+                </NavLink>
+            </div>
+
+            <div class="form-container">
+                <h2><i class="fas fa-plus-circle"></i> Assign New Venue</h2>
+                <p class="text-muted mb-4">Enter the details for the venue assignment</p>
+
+                <EditForm Model="venue" OnValidSubmit="HandleValidSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="form-group">
+                        <label class="form-label">Trainee Name *</label>
+                        <InputText @bind-Value="venue.TraineeName" class="form-control" placeholder="Enter trainee name" />
+                        <ValidationMessage For="@(() => venue.TraineeName)" class="text-danger" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Course Date *</label>
+                        <InputDate @bind-Value="venue.CourseDate" class="form-control" />
+                        <ValidationMessage For="@(() => venue.CourseDate)" class="text-danger" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Course *</label>
+                        <InputSelect @bind-Value="venue.CourseId" class="form-control">
+                            <option value="">-- Select a course --</option>
+                            @foreach (var course in courseList)
+                            {
+                                <option value="@course.Id">@course.CourseName</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => venue.CourseId)" class="text-danger" />
+                    </div>
+
+                    <div class="mt-4 d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary" disabled="@isSubmitting">
+                            @if (isSubmitting)
+                            {
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>Assigning...</span>
+                                                        }
+                            else
+                            {
+                                <i class="fas fa-save"></i>
+                                <span>Assign Venue</span>
+                                                        }
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" @onclick="ResetForm">
+                            <i class="fas fa-undo"></i> Reset Form
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (showSuccessMessage)
+{
+    <div class="alert alert-success alert-dismissible fade show position-fixed" style="top: 20px; right: 20px; z-index: 1050;">
+        <i class="fas fa-check-circle"></i> Venue assigned successfully!
+        <NavLink href="/all-venues" class="btn btn-light btn-sm ms-2">View All Venues</NavLink>
+        <button type="button" class="btn-close" @onclick="() => showSuccessMessage = false"></button>
+    </div>
+}
+
+@if (showErrorMessage)
+{
+    <div class="alert alert-danger alert-dismissible fade show position-fixed" style="top: 80px; right: 20px; z-index: 1050;">
+        <i class="fas fa-exclamation-circle"></i> @errorMessage
+        <button type="button" class="btn-close" @onclick="() => showErrorMessage = false"></button>
+    </div>
+}
+
+<style>
+    /* --- Main styling --- */
+    .main-container {
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 25px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        margin: 60px auto;
+        max-width: 1300px;
+        overflow: hidden;
+        padding: 50px;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .back-btn {
+        background: linear-gradient(135deg,#1e3c72 0%,#2a5298 50%,#000 100%);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(30,60,114,0.3);
+    }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30,60,114,0.4);
+        }
+
+    .form-container {
+        background: linear-gradient(145deg,#fff 0%,#f8f9fa 100%);
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+        border: 1px solid rgba(30,60,114,0.1);
+    }
+
+        .form-container h2 {
+            color: #1e3c72;
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+    .form-group {
+        margin-bottom: 30px;
+    }
+
+    .form-label {
+        font-weight: 700;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 15px 20px;
+        width: 100%;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg,#1e3c72 0%,#2a5298 50%,#000 100%);
+        border: none;
+        padding: 15px 35px;
+        border-radius: 12px;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 6px 20px rgba(30,60,114,0.3);
+    }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(30,60,114,0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+        }
+
+    .btn-outline-secondary {
+        border: 2px solid #1e3c72;
+        color: #1e3c72;
+        background: transparent;
+        padding: 15px 35px;
+        border-radius: 12px;
+        font-weight: 700;
+    }
+
+        .btn-outline-secondary:hover {
+            background: linear-gradient(135deg,#1e3c72 0%,#2a5298 100%);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+    .text-danger {
+        color: #dc3545 !important;
+        font-size: 0.875rem;
+        margin-top: 5px;
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg,#28a745 0%,#20c997 100%);
+        border: none;
+        color: white;
+        font-weight: 600;
+        border-radius: 12px;
+    }
+
+    .alert-danger {
+        background: linear-gradient(135deg,#dc3545 0%,#c82333 100%);
+        border: none;
+        color: white;
+        font-weight: 600;
+        border-radius: 12px;
+    }
+
+    /* --- Responsive --- */
+    @@media (max-width: 768px) {
+        .form-container
+
+    {
+        padding: 30px;
+    }
+
+    .btn-primary, .btn-outline-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .back-btn.ms-3 {
+        margin-left: 0 !important;
+    }
+
+    }
+
+    @@media (max-width: 480px) {
+        .main-container
+
+    {
+        padding: 20px;
+        margin: 30px 10px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    .form-control {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    }
+</style>
+
+@code {
+    private Venues venue = new();
+    private List<CertificationApp.Shared.Models.Courses> courseList = new();
+    private bool isSubmitting = false;
+    private bool showSuccessMessage = false;
+    private bool showErrorMessage = false;
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        courseList = await Http.GetFromJsonAsync<List<CertificationApp.Shared.Models.Courses>>("api/Courses") ?? new List<CertificationApp.Shared.Models.Courses>();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        isSubmitting = true;
+        try
+        {
+            venue.Id = Guid.NewGuid();
+            var response = await Http.PostAsJsonAsync("api/Venue", venue);
+
+            if (response.IsSuccessStatusCode)
+            {
+                showSuccessMessage = true;
+                ResetForm();
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                ShowErrorMessage(error);
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowErrorMessage($"Error assigning venue: {ex.Message}");
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+
+    private void ResetForm()
+    {
+        venue.TraineeName = string.Empty;
+        venue.CourseDate = DateTime.Today;
+        venue.CourseId = Guid.Empty;
+
+        showErrorMessage = false;
+        showSuccessMessage = false;
+    }
+
+    private void ShowErrorMessage(string message)
+    {
+        errorMessage = message;
+        showErrorMessage = true;
+        showSuccessMessage = false;
+    }
+}

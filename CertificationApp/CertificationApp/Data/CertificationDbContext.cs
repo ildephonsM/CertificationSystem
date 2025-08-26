@@ -10,5 +10,6 @@ namespace CertificationApp.Data
 
         public DbSet<CreateUser> Users { get; set; } = default!;
         public DbSet<Courses> Courses { get; set; } = default!;
+        public DbSet<Venues> Venues { get; set;} = default!;
     }
 }

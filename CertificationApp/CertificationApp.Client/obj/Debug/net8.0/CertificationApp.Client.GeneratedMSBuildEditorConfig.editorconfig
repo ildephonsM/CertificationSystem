@@ -28,6 +28,18 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkQ291cnNlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Sever/CertificationApp/CertificationApp/CertificationApp.Client/Pages/AddVenue.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVmVudWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Sever/CertificationApp/CertificationApp/CertificationApp.Client/Pages/AllLearners.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxsTGVhcm5lcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Sever/CertificationApp/CertificationApp/CertificationApp.Client/Pages/AllVenues.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxsVmVudWVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Sever/CertificationApp/CertificationApp/CertificationApp.Client/Pages/CreateUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlVXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

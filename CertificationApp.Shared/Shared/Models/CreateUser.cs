@@ -20,5 +20,6 @@ namespace CertificationApp.Shared.Models
 
         public DateTime DateCompleted { get; set; }
         public DateTime CreatedDate { get; set; }
+        public DateTime? DateModified { get; set; }
     }
 }

@@ -22,6 +22,12 @@
                 <p>Add a new learner to the system</p>
             </NavLink>
 
+            <NavLink href="/all-learners" class="nav-card" Match="NavLinkMatch.Prefix">
+                <i class="fas fa-users"></i>
+                <h3>All Learners</h3>
+                <p>View all registered learners</p>
+            </NavLink>
+
             <!-- NEW: Add Course NavLink -->
             <NavLink href="/add-course" class="nav-card" Match="NavLinkMatch.Prefix">
                 <i class="fas fa-book"></i>
@@ -29,11 +35,20 @@
                 <p>Add a new course to the system</p>
             </NavLink>
 
+
+            <NavLink href="/create-venue" class="nav-card" Match="NavLinkMatch.Prefix">
+                <i class="fas fa-history"></i>
+                <h3>Add Venue</h3>
+                <p>Add a new venue to the system</p>
+            </NavLink>
+
             <NavLink href="history" class="nav-card" Match="NavLinkMatch.Prefix">
                 <i class="fas fa-history"></i>
                 <h3>View Historical Data</h3>
                 <p>Browse and manage existing certificates</p>
             </NavLink>
+
+            
         </div>
     </div>
 </div>
@@ -106,12 +121,17 @@
         padding: 60px 40px;
         display: flex;
         justify-content: center;
+        align-items: stretch; /* ✅ make all cards same height */
         gap: 40px;
         flex-wrap: wrap;
         background: linear-gradient(45deg, #f8f9fa 0%, #ffffff 100%);
     }
 
     .nav-card {
+        flex: 1 1 calc(50% - 40px); /* two cards per row */
+        display: flex; /* ✅ allow internal flex layout */
+        flex-direction: column; /* stack icon, title, description */
+        justify-content: space-between; /* spread out nicely */
         background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
         border: none;
         border-radius: 20px;
@@ -120,12 +140,11 @@
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
-        min-width: 220px;
-        max-width: 280px;
         position: relative;
         overflow: hidden;
         border: 2px solid transparent;
         text-decoration: none !important;
+        max-width: 500px;
     }
 
         .nav-card::before {
@@ -189,23 +208,20 @@
         }
 
     @@media (max-width: 768px) {
-        .header h1
+        .header h1 {
+            font-size: 2.2rem;
+        }
 
-    {
-        font-size: 2.2rem;
-    }
-
-    .nav-buttons {
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 20px;
-    }
-
-    .nav-card {
-        width: 100%;
-        max-width: 350px;
-    }
-
+        .nav-buttons {
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+    
+        .nav-card {
+            flex: 1 1 100%;
+            max-width: 350px;
+        }
     }
 </style>
 
