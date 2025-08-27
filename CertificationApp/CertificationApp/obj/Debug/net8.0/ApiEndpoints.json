@@ -1,5 +1,56 @@
 [
   {
+    "ContainingType": "CertificationApp.Server.Controllers.AttendeesController",
+    "Method": "GetAttendees",
+    "RelativePath": "api/Attendees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CertificationApp.Shared.Models.Attendees, CertificationApp.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CertificationApp.Server.Controllers.AttendeesController",
+    "Method": "CreateAttendee",
+    "RelativePath": "api/Attendees",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "venueId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CertificationApp.Shared.Models.Attendees",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "CertificationApp.Server.Controllers.CertificatesController",
     "Method": "GetUsers",
     "RelativePath": "api/Certificates",

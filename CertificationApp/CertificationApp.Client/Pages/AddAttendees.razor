@@ -1,0 +1,116 @@
+﻿@page "/add-attendees"
+@inject HttpClient Http
+@using CertificationApp.Shared.Models
+
+<PageTitle>Add Attendees</PageTitle>
+
+<h3>Add Attendees</h3>
+
+<div class="container">
+    <div class="form-group mb-3">
+        <label>Select User:</label>
+        <select class="form-control" @bind="SelectedUserId">
+            <option value="">-- Select User --</option>
+            @foreach (var user in users)
+            {
+                <option value="@user.Id">@user.Name @user.Surname</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label>Select Venue (Trainee Name):</label>
+        <select class="form-control" @bind="selectedVenueId">
+            <option value="">-- Select Venue --</option>
+            @foreach (var venue in filteredVenues)
+            {
+                <option value="@venue.Id">@venue.TraineeName</option>
+            }
+        </select>
+    </div>
+
+    <button class="btn btn-primary" @onclick="SubmitAttendee" disabled="@(!CanSubmit)">Add Attendee</button>
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert @messageClass mt-3">@message</div>
+    }
+</div>
+
+@code {
+    private List<CertificationApp.Shared.Models.CreateUser> users = new();
+    private List<CertificationApp.Shared.Models.Venues> venues = new();
+    private List<Venues> filteredVenues = new();
+
+    private Guid selectedUserId;
+    private Guid selectedVenueId;
+
+    private string message = "";
+    private string messageClass = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await Http.GetFromJsonAsync<List<CertificationApp.Shared.Models.CreateUser>>("api/Certificates") ?? new List<CertificationApp.Shared.Models.CreateUser>();
+        venues = await Http.GetFromJsonAsync<List<CertificationApp.Shared.Models.Venues>>("api/Venue") ?? new List<CertificationApp.Shared.Models.Venues>();
+    }
+
+    // private void LoadVenuesForUser(ChangeEventArgs e)
+    // {
+    //     if (Guid.TryParse(e.Value?.ToString(), out Guid userId))
+    //     {
+    //         selectedUserId = userId;
+
+    //         // Optional: Filter venues based on some logic related to user
+    //         filteredVenues = venues; // For now, show all venues
+    //     }
+    //     else
+    //     {
+    //         filteredVenues = new List<Venues>();
+    //     }
+    // }
+
+    private Guid SelectedUserId
+    {
+        get => selectedUserId;
+        set
+        {
+            selectedUserId = value;
+            LoadVenuesForUser();
+        }
+    }
+
+    private void LoadVenuesForUser()
+    {
+        filteredVenues = venues;
+    }
+
+    private bool CanSubmit => selectedUserId != Guid.Empty && selectedVenueId != Guid.Empty;
+
+    private async Task SubmitAttendee()
+    {
+        if (!CanSubmit)
+        {
+            message = "Please select both user and venue.";
+            messageClass = "alert-danger";
+            return;
+        }
+
+        var response = await Http.PostAsJsonAsync<object>($"api/Attendees?userId={selectedUserId}&venueId={selectedVenueId}", new { });
+
+        if (response.IsSuccessStatusCode)
+        {
+            message = "Attendee added successfully!";
+            messageClass = "alert-success";
+
+            // Reset selections
+            selectedUserId = Guid.Empty;
+            selectedVenueId = Guid.Empty;
+            filteredVenues = new List<CertificationApp.Shared.Models.Venues>();
+        }
+        else
+        {
+            message = "Error adding attendee. Please try again.";
+            messageClass = "alert-danger";
+        }
+    }
+}

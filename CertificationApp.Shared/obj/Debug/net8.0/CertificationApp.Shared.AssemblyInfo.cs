@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CertificationApp.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe31177b12be40db17f3271d5a904695f2c2fa66")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e738f91b76bc77810cb980395f4659aeaf82b95")]
 [assembly: System.Reflection.AssemblyProductAttribute("CertificationApp.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CertificationApp.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

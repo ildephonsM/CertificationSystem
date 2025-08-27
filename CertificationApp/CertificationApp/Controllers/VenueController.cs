@@ -22,7 +22,7 @@ namespace CertificationApp.Server.Controllers
         public async Task<ActionResult<IEnumerable<Venues>>> GetVenues()
         {
             return await _context.Venues
-                                 .Include(v => v.Course) // Include course info if needed
+                                 .Include(v => v.Course) 
                                  .ToListAsync();
         }
 
